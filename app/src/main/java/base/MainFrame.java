@@ -3,13 +3,21 @@ package base;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
+import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class MainFrame extends JFrame{
+	
 	static JFrame mainFrame = new JFrame();
 	static JPanel basicPanel = new JPanel();
 	
@@ -17,13 +25,15 @@ public class MainFrame extends JFrame{
 	JButton findIdPwd = new JButton();
 	JButton goToSign = new JButton();
 	
+	static JLabel out = new JLabel();
 	
-	JTextField idInput = new JTextField();
-	JTextField pwdInput = new JTextField();
+	static JTextField idInputt = new JTextField();
+	static JPasswordField pwdInputt = new JPasswordField();
 	
 	
 	public MainFrame(){
 		mainframe();
+		
 		
 	}
 	
@@ -31,20 +41,70 @@ public class MainFrame extends JFrame{
 		
 		Font font = new Font("Arial", Font.BOLD, 15);
 		
+		out.setText("");
+		out.setBounds(basicPanel.HEIGHT/2+470, basicPanel.WIDTH/2 + 165, 130, 50);
+		out.setForeground(Color.RED);
+		out.setFont(font);
+		basicPanel.add(out, BorderLayout.WEST);
+		
+		
+		
+		
 //아이디 적는 칸
-		idInput.setText("  아이디");
-		idInput.setBounds(basicPanel.HEIGHT/2+470, basicPanel.WIDTH/2 + 210, 300, 50);
-		idInput.setForeground(Color.LIGHT_GRAY);
-		idInput.setFont(font);
-		basicPanel.add(idInput, BorderLayout.WEST);
+		idInputt.setText("  학번");
+		idInputt.setBounds(basicPanel.HEIGHT/2+470, basicPanel.WIDTH/2 + 210, 300, 50);
+		idInputt.setForeground(Color.LIGHT_GRAY);
+		idInputt.setFont(font);
+		
+		idInputt.addFocusListener(new FocusListener() {
+	          public void focusGained(FocusEvent e) {
+	             if(idInputt.getText().equals("  학번")) {
+	            	 idInputt.setForeground(Color.LIGHT_GRAY);
+	            	 idInputt.setText("");
+	             }
+	             else
+	            	 idInputt.setForeground(Color.BLACK);
+	          }
+
+	          public void focusLost(FocusEvent e) {
+	             if(idInputt.getText().equals("")) {
+	            	 idInputt.setText("  학번");
+	            	 idInputt.setForeground(Color.LIGHT_GRAY);
+	             }
+	             
+	             else
+	            	 idInputt.setForeground(Color.BLACK);
+	          } 
+	      });
+		
+	      
+		basicPanel.add(idInputt, BorderLayout.WEST);
 		
 		
 //비밀번호 적는 칸
-		pwdInput.setText("  비밀번호");
-		pwdInput.setBounds(basicPanel.HEIGHT/2+470, basicPanel.WIDTH/2 + 260, 300, 50);
-		pwdInput.setForeground(Color.LIGHT_GRAY);
-		pwdInput.setFont(font);
-		basicPanel.add(pwdInput, BorderLayout.WEST);
+		pwdInputt.setText("  비밀번호");
+		pwdInputt.setBounds(basicPanel.HEIGHT/2+470, basicPanel.WIDTH/2 + 260, 300, 50);
+		pwdInputt.setForeground(Color.LIGHT_GRAY);
+		pwdInputt.setFont(font);
+		pwdInputt.addFocusListener(new FocusListener() {
+	          public void focusGained(FocusEvent e) {
+	             if(pwdInputt.getText().equals("  비밀번호"))
+	            	 pwdInputt.setText("");
+	             else
+	            	 idInputt.setForeground(Color.BLACK);
+	          }
+
+	          public void focusLost(FocusEvent e) {
+	             if(pwdInputt.getText().equals("")) {
+	            	 pwdInputt.setText("  비밀번호");
+	            	 pwdInputt.setForeground(Color.LIGHT_GRAY);
+	             }
+	             else
+	            	 pwdInputt.setForeground(Color.BLACK);
+	          } 
+	      });
+		
+		basicPanel.add(pwdInputt, BorderLayout.WEST);
 		
 		
 		

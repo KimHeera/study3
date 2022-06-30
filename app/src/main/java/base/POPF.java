@@ -14,8 +14,8 @@ public class POPF extends JFrame{
 	
 	JPanel infoPanel = new JPanel();
 	
-	JLabel idLb = new JLabel();
-	JLabel pwdLb = new JLabel();
+	static JLabel idLb = new JLabel();
+	static JLabel pwdLb = new JLabel();
 	
 	JButton goLo = new JButton();
 	
@@ -24,24 +24,27 @@ public class POPF extends JFrame{
 	}
 	
 	void pop() {
+		
+		FindToNext ftn = new FindToNext();
+		
 		Font infofont = new Font("Arial", Font.BOLD, 20);
 		
 //아이디 출력 라벨	
-		idLb.setText("회원님의 아이디는 ~~~~~~~~~~~~ 이며, ");
-		idLb.setBounds(infoPanel.HEIGHT/2 + 85, infoPanel.WIDTH/2 + 20, 350, 50);
+		idLb.setText("");
+		idLb.setBounds(infoPanel.HEIGHT/2 + 115, infoPanel.WIDTH/2 + 20, 350, 50);
 		idLb.setForeground(Color.LIGHT_GRAY);
 		idLb.setFont(infofont);
 		infoPanel.add(idLb, BorderLayout.WEST);
 		
 //비밀번호 출력 라벨
-		pwdLb.setText("비밀번호는 ~~~~~~~~~~~~ 입니다.");
-		pwdLb.setBounds(infoPanel.HEIGHT/2 + 105, infoPanel.WIDTH/2 + 70, 350, 50);
+		pwdLb.setText("");
+		pwdLb.setBounds(135, infoPanel.WIDTH/2 + 70, 350, 50);
 		pwdLb.setForeground(Color.LIGHT_GRAY);
 		pwdLb.setFont(infofont);
 		infoPanel.add(pwdLb, BorderLayout.WEST);
 		
 //로그인 하러 가기 버튼 
-		FindToNext ftn = new FindToNext();
+		
 		goLo.setText("로그인 하러 가기");
 		goLo.setOpaque(true);
 		goLo.addActionListener(ftn);

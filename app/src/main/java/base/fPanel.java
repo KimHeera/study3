@@ -3,6 +3,8 @@ package base;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -12,12 +14,12 @@ import javax.swing.JTextField;
 public class fPanel extends JPanel{
 	static JPanel findpanel = new JPanel();
 	
+	static JLabel nn = new JLabel();
 	JLabel n = new JLabel();
-	JLabel q = new JLabel();
 	JLabel ques = new JLabel();
 	
-	JTextField name = new JTextField();
-	JTextField an = new JTextField();
+	static JTextField name = new JTextField();
+	static JTextField an = new JTextField();
 	
 	JButton check = new JButton();
 	JButton undo = new JButton();
@@ -32,6 +34,12 @@ public class fPanel extends JPanel{
 		
 		Font findfont = new Font("Arial", Font.BOLD, 15);
 		
+		nn.setText("");
+		nn.setBounds(findpanel.HEIGHT/2+470, findpanel.WIDTH/2 + 145, 130, 50);
+		nn.setForeground(Color.RED);
+		nn.setFont(findfont);
+		findpanel.add(nn, BorderLayout.WEST);
+		
 //이름 라벨 설정		
 		n.setText(" 이름을 적어주세요.");
 		n.setBounds(findpanel.HEIGHT/2+470, findpanel.WIDTH/2 + 175, 130, 50);
@@ -42,20 +50,15 @@ public class fPanel extends JPanel{
 //이름 적는 텍스트필드		
 		name.setText("");
 		name.setBounds(findpanel.HEIGHT/2+470, findpanel.WIDTH/2 + 210, 300, 50);
-		name.setForeground(Color.LIGHT_GRAY);
+		name.setForeground(Color.BLACK);
 		name.setFont(findfont);
-		findpanel.add(name, BorderLayout.WEST);
-	
-//질문 라벨 설정		
-		q.setText(" 질문에 대한 답변을 해주세요.");
 		
-		q.setBounds(findpanel.HEIGHT/2+470, findpanel.WIDTH/2 + 265, 200, 50);
-		q.setForeground(Color.BLACK);
-		q.setFont(findfont);
-		findpanel.add(q, BorderLayout.WEST);	
+		
+		findpanel.add(name, BorderLayout.WEST);
+		
 		
 //질문
-		ques.setText(" 당신의 보물 1호는?");
+		ques.setText(" 가입할 때 썼던 힌트를 적으세요.");
 		
 		ques.setBounds(findpanel.HEIGHT/2+470, findpanel.WIDTH/2 + 290, 200, 50);
 		ques.setForeground(Color.BLACK);
@@ -67,7 +70,7 @@ public class fPanel extends JPanel{
 //질문에 대한 답변 적는 칸	
 		an.setText("");
 		an.setBounds(findpanel.HEIGHT/2+470, findpanel.WIDTH/2 + 325, 300, 50);
-		an.setForeground(Color.LIGHT_GRAY);
+		an.setForeground(Color.BLACK);
 		an.setFont(findfont);
 		findpanel.add(an, BorderLayout.WEST);
 		
